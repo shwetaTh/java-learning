@@ -19,14 +19,14 @@ public class ImageGrid {
         };
         for (int i = 0; i < images.length; i++) {
             ImageIcon img = new ImageIcon(images[i]);
-//            Image img = icon.getImage();
-//            Image resize= img.getScaledInstance(200,200, Image.SCALE_DEFAULT);
-//            ImageIcon resizedIcon = new ImageIcon(resize);
-            JLabel label = new JLabel(img);
+            Image img1 = img.getImage();
+            Image resize= img1.getScaledInstance(600,600, Image.SCALE_SMOOTH);
+            ImageIcon resizedImg = new ImageIcon(resize);
+            JLabel label = new JLabel(resizedImg);
             panel.add(label);
         }
         frame. add(panel);
-        frame.setSize(1000, 1000);
+        frame.setSize(800, 800);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
