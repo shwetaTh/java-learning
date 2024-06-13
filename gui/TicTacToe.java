@@ -26,6 +26,7 @@ public class TicTacToe {
             });
             frame.add(panels[i]);
         }
+        JButton reset = new JButton("Reset");
         frame.setSize(500, 400);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
