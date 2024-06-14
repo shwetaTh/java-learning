@@ -2,10 +2,11 @@ import javax.swing.*;
 import java.awt.*;
 
 public class Calculator {
+    private static JTextField display;
     public static void main(String[] args) {
         JFrame frame = new JFrame("Calculator");
         frame.setLayout(new GridLayout(2, 1));
-        JTextField display = new JTextField();
+        display = new JTextField();
         JPanel nums= new JPanel();
         nums.setLayout(new GridLayout(4, 4));
         nums.setBorder(BorderFactory.createLineBorder(Color.BLACK));
@@ -58,6 +59,9 @@ public class Calculator {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
     private static class BtnClick implements ActionListener {
+        private double operand1 = 0;
+        private boolean newInput = true;
+        private String currentOperation = "";
         public void actionPerformed(ActionEvent e) {
             String command = e.getActionCommand();
             switch (command) {
@@ -82,13 +86,20 @@ public class Calculator {
             }
         }
         private void clear(){
-
+            display.setText("");
+            currentOperation = "";
+            operand1 = 0;
+            newInput = true;
         }
         private void operation(String oper){
 
         }
         private void calcSqrt(){
-
+            if (!display.getText().isEmpty()) {
+                double value = Double.parseDouble(display.getText());
+                display.setText(String.valueOf(Math.sqrt(value)));
+                newInput = true;
+            }
         }
         private void result(){
 
