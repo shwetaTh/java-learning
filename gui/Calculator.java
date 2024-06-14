@@ -84,7 +84,7 @@ public class Calculator {
         private void clear(){
 
         }
-        private void operation(){
+        private void operation(String oper){
 
         }
         private void calcSqrt(){
@@ -93,7 +93,7 @@ public class Calculator {
         private void result(){
 
         }
-        private void addDis(){
+        private void addDis(String num){
             
         }
     }
