@@ -73,6 +73,7 @@ public class Calculator {
                 case "X":
                 case "/":
                     operation(command);
+                    addDis(command);
                     break;
                 case "Sqrt":
                     calcSqrt();
