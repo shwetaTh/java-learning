@@ -57,4 +57,44 @@ public class Calculator {
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
+    private static class BtnClick implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            String command = e.getActionCommand();
+            switch (command) {
+                case "C":
+                    clear();
+                    break;
+                case "+":
+                case "-":
+                case "X":
+                case "/":
+                    operation(command);
+                    break;
+                case "Sqrt":
+                    calcSqrt();
+                    break;
+                case "=":
+                    result();
+                    break;
+                default:
+                    addDis(command);
+                    break;
+            }
+        }
+        private void clear(){
+
+        }
+        private void operation(){
+
+        }
+        private void calcSqrt(){
+
+        }
+        private void result(){
+
+        }
+        private void addDis(){
+            
+        }
+    }
 }
