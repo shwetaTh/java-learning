@@ -33,6 +33,26 @@ public class MSPaintDupe {
         });
         colors.add(blue);
 
+        JButton green = new JButton();
+        green.setBackground(Color.green);
+        green.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                mainColor= "#00FF00";
+            }
+        });
+        colors.add(green);
+
+        JButton pink = new JButton();
+        pink.setBackground(Color.pink);
+        pink.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                mainColor= "#FFC0CB";
+            }
+        });
+        colors.add(pink);
+
         frame.add(colors,BorderLayout.NORTH);
 
         JPanel screen = new JPanel();
