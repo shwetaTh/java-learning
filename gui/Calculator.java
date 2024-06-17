@@ -51,62 +51,80 @@ public class Calculator {
         Component[] components = nums.getComponents();
         for (Component component : components) {
             if (component instanceof JButton) {
-                ((JButton) component).addActionListener(new BtnClick());
+                ((JButton) component).addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        String inp = ((JButton)e.getSource()).getText();
+                        switch (inp) {
+                            case "C":
+                                clear();
+                                break;
+                            case "+":
+                            case "-":
+                            case "X":
+                            case "/":
+                                getOperation(inp);
+                                addDis(inp);
+                                break;
+                            case "Sqrt":
+                                calcSqrt();
+                                break;
+                            case "=":
+                                result();
+                                break;
+                            default:
+                                addDis(inp);
+                                break;
+                        }
+                    }
+                    private void clear(){
+                        display.setText("");
+                    }
+                    private void getOperation(String oper){
+                        operand1 = Integer.parseInt(display.getText());
+                        operation = oper;
+                        System.out.println("operation "+ oper);
+                    }
+                    private void calcSqrt(){
+                        int num = Integer.parseInt(display.getText());
+                        display.setText(String.valueOf(Math.sqrt(num)));
+                    }
+                    private void result(){
+                        String text = display.getText();
+                        int index = text.indexOf(operation);
+                        String operand2Str = text.substring(index + 1);
+                        int operand2 = Integer.parseInt(operand2Str);
+                        double result = 0;
+                        switch (operation){
+                            case "+":
+                                result= operand1+operand2;
+                                break;
+                            case "-":
+                                result=operand1-operand2;
+                                break;
+                            case "/":
+                                result=operand1/operand2;
+                                System.out.println(result);
+                                break;
+                            case "X":
+                                result=operand1*operand2;
+                        }
+                        display.setText(String.valueOf(result));
+                        operation="";
+                    }
+                    private void addDis(String num) {
+                        if (display.getText()!=""){
+                            display.setText(display.getText()+num);
+                        }
+                        else{
+                            display.setText(num);
+                        }
+                    }
+                });
             }
         }
         frame.setSize(500, 400);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    }
-    private static class BtnClick implements ActionListener {
-        private double operand1 = 0;
-        private boolean newInput = true;
-        private String currentOperation = "";
-        public void actionPerformed(ActionEvent e) {
-            String command = e.getActionCommand();
-            switch (command) {
-                case "C":
-                    clear();
-                    break;
-                case "+":
-                case "-":
-                case "X":
-                case "/":
-                    operation(command);
-                    addDis(command);
-                    break;
-                case "Sqrt":
-                    calcSqrt();
-                    break;
-                case "=":
-                    result();
-                    break;
-                default:
-                    addDis(command);
-                    break;
-            }
-        }
-        private void clear(){
-            display.setText("");
-            currentOperation = "";
-            operand1 = 0;
-            newInput = true;
-        }
-        private void operation(String oper){
-
-        }
-        private void calcSqrt(){
-            if (!display.getText().isEmpty()) {
-                double value = Double.parseDouble(display.getText());
-                display.setText(String.valueOf(Math.sqrt(value)));
-                newInput = true;
-            }
-        }
-        private void result(){
-
-        }
-        private void addDis(String num){
-            
-        }
     }
 }
