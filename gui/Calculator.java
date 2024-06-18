@@ -4,6 +4,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Calculator {
+    private static double operand1 = 0;
+    private static String operation = "";
     private static JTextField display;
     public static void main(String[] args) {
         JFrame frame = new JFrame("Calculator");
@@ -83,7 +85,7 @@ public class Calculator {
                         display.setText("");
                     }
                     private void getOperation(String oper){
-                        operand1 = Integer.parseInt(display.getText());
+                        operand1 = Double.parseDouble(display.getText());
                         operation = oper;
                         System.out.println("operation "+ oper);
                     }
@@ -95,8 +97,8 @@ public class Calculator {
                         String text = display.getText();
                         int index = text.indexOf(operation);
                         String operand2Str = text.substring(index + 1);
-                        int operand2 = Integer.parseInt(operand2Str);
-                        double result = 0;
+                        double operand2 = Double.parseDouble(operand2Str);
+                        double result = 0d;
                         switch (operation){
                             case "+":
                                 result= operand1+operand2;
@@ -125,6 +127,8 @@ public class Calculator {
                 });
             }
         }
+
+
         frame.setSize(500, 400);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
