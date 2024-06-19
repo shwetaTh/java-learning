@@ -55,6 +55,13 @@ public class Login {
             }
         });
 
+        signupBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new SignUp(connection);
+            }
+        });
+
         frame.add(usernameLabel);
         frame.add(usernameField);
         frame.add(passwordLabel);
