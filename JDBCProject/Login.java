@@ -4,12 +4,7 @@ import java.awt.event.ActionListener;
 import java.sql.*;
 
 public class Login {
-    public static void main(String[] args) throws SQLException {
-        String url = "jdbc:mysql://localhost:3306/school";
-        String user = "root";
-        String password = "rootAdmin";
-        Connection connection = DriverManager.getConnection(url, user, password);
-
+    public Login(Connection connection){
         JFrame frame = new JFrame("Login");
 
         JLabel usernameLabel = new JLabel("Username: ");
@@ -72,5 +67,12 @@ public class Login {
         frame.setSize(500, 400);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
+    public static void main(String[] args) throws SQLException {
+        String url = "jdbc:mysql://localhost:3306/school";
+        String user = "root";
+        String password = "rootAdmin";
+        Connection connection = DriverManager.getConnection(url, user, password);
+        new Login(connection);
     }
 }
