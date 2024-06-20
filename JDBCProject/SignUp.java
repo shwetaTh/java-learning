@@ -37,6 +37,12 @@ public class SignUp {
         loginBtn.setBounds(150, 250, 90, 30);
         signupBtn.setBounds(260, 250, 90, 30);
 
+        loginBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new Login(connection);
+            }
+        });
 
         signupBtn.addActionListener(new ActionListener() {
             @Override
@@ -75,11 +81,11 @@ public class SignUp {
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
-    /*public static void main(String[] args) throws SQLException {
+    public static void main(String[] args) throws SQLException {
         String url = "jdbc:mysql://localhost:3306/school";
         String user = "root";
         String password = "rootAdmin";
         Connection connection = DriverManager.getConnection(url, user, password);
-
-    }*/
+        new SignUp(connection);
+    }
 }
