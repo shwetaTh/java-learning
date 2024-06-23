@@ -16,15 +16,31 @@ public class Home {
         menu.add(item3);
         frame.setJMenuBar(menu);
 
-        String query = "select * from student";
-        Statement statement = connection.createStatement();
-        ResultSet rs= statement.executeQuery(query);
-        while (rs.next()){
-            int id = rs.getInt("std_id");
-            String std_name = rs.getString("std_name");
-            int roll = rs.getInt("rollNo");
-            System.out.println("Id: "+ id + " || Name: "+ std_name+ " || Roll no: "+ roll);
-        }
+         JTable table = new JTable();
+        DefaultTableModel tableModel = new DefaultTableModel();
+        tableModel.addColumn("id");
+        tableModel.addColumn("name");
+        tableModel.addColumn("rollNo");
+            String query = "select * from student";
+            Statement statement = connection.createStatement();
+            ResultSet rs = statement.executeQuery(query);
+
+            /*String h1 = "id";
+            String h2= "name";
+            String h3= "roll";
+            Object[] headers = {h1, h2, h3};
+            tableModel.addRow(headers);*/
+            while (rs.next()){
+                int id = rs.getInt("std_id");
+                String std_name = rs.getString("std_name");
+                int roll = rs.getInt("rollNo");
+                Object[] row = {id, std_name, roll};
+                tableModel.addRow(row);
+            }
+            table.setModel(tableModel);
+            //frame.add(table);
+            JScrollPane scrollPane = new JScrollPane(table);
+            frame.add(scrollPane);
         
 
         frame.setSize(500, 400);
