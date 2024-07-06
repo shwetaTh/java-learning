@@ -22,10 +22,10 @@ public class Lab4 {
 
             urlConnection.connect();
 
-            System.out.println(urlConnection.getConnectTimeout());
-            System.out.println(urlConnection.getReadTimeout());
-            System.out.println(urlConnection.getUseCaches());
-            System.out.println(urlConnection.getAllowUserInteraction());
+            System.out.println("Connect timeout: "+ urlConnection.getConnectTimeout());
+            System.out.println("Read timeout: "+ urlConnection.getReadTimeout());
+            System.out.println("Use caches: "+ urlConnection.getUseCaches());
+            System.out.println("Allow user interaction: "+ urlConnection.getAllowUserInteraction());
 
 
 
