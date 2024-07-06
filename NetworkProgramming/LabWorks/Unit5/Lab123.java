@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.net.URLConnection;
 
-public class Lab1 {
+public class Lab123 {
     public static void main(String[] args) {
         try {
             // Establish a URLConnection to the specified URL
