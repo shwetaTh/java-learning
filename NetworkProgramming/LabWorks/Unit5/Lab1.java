@@ -24,6 +24,16 @@ public class Lab1 {
                 System.out.println("Content Length: not available");
             }
 
+            System.out.println("Extended program for lab 2: ");
+            BufferedReader in = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
+            String inputLine;
+            System.out.println("\n--- Content Start ---");
+            while ((inputLine = in.readLine()) != null) {
+                System.out.println(inputLine);
+            }
+            System.out.println("--- Content End ---");
+            in.close();
+
         } catch (IOException e) {
             e.printStackTrace();
         }
