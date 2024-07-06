@@ -34,6 +34,13 @@ public class Lab123 {
             System.out.println("--- Content End ---");
             in.close();
 
+            System.out.println("\nModified for lab 3: ");
+            String contentType = urlConnection.getHeaderField("Content-Type");
+            String lastModified = urlConnection.getHeaderField("Last-Modified");
+
+            System.out.println("Content-Type: " + (contentType != null ? contentType : "not available"));
+            System.out.println("Last-Modified: " + (lastModified != null ? lastModified : "not available"));
+
         } catch (IOException e) {
             e.printStackTrace();
         }
